@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>There's No Place Like Home – ICSR+Art 2026 Workshop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #faf7f2;
+    --navy: #1a2340;
+    --coral: #c95e3b;
+    --coral-light: #f5ede8;
+    --warm-gray: #6b6560;
+    --border: #e2ddd8;
+    --card-bg: #ffffff;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ── Header ── */
+  header {
+    background: var(--navy);
+    color: #fff;
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 60% 0%, rgba(201,94,59,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .event-badge {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--coral);
+    border: 1px solid rgba(201,94,59,0.5);
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 1.4rem;
+  }
+  header h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 600;
+    line-height: 1.2;
+    max-width: 820px;
+    margin: 0 auto 0.6rem;
+    color: #fff;
+  }
+  header h1 em {
+    font-style: italic;
+    color: #f0c9ba;
+  }
+  .header-subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 1.8rem;
+  }
+  .header-meta {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .header-meta span {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.6);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .header-meta strong {
+    color: rgba(255,255,255,0.92);
+    font-weight: 500;
+  }
+
+  /* ── Robot images ── */
+  .robots {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    max-height: 340px;
+    overflow: hidden;
+  }
+  .robots img {
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    display: block;
+    filter: saturate(0.9);
+    transition: filter 0.3s;
+  }
+  .robots img:hover { filter: saturate(1.1); }
+
+  /* ── Main content ── */
+  main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3.5rem 2rem 5rem;
+  }
+
+  /* ── Section headings ── */
+  .section-label {
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 1rem;
+  }
+  h2 {
+    font-family: 'Lora', serif;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 1.2rem;
+    line-height: 1.3;
+  }
+
+  /* ── About section ── */
+  .about {
+    border-left: 3px solid var(--coral);
+    padding-left: 1.5rem;
+    margin-bottom: 3.5rem;
+  }
+  .about p {
+    color: #3a3530;
+    margin-bottom: 1rem;
+    font-size: 1.02rem;
+  }
+  .about p:last-child { margin-bottom: 0; }
+
+  /* ── Divider ── */
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 3rem 0;
+  }
+
+  /* ── Panelist section ── */
+  .panelists-intro {
+    margin-bottom: 2.5rem;
+  }
+  .panelists-intro .names {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 1.2rem;
+  }
+  .name-chip {
+    background: var(--coral-light);
+    color: var(--coral);
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 5px 14px;
+    border-radius: 20px;
+  }
+
+  /* ── Bio cards ── */
+  .bio-card {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 1.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.4rem;
+    align-items: start;
+  }
+  .bio-card img {
+    width: 130px;
+    height: 130px;
+    border-radius: 8px;
+    object-fit: cover;
+    object-position: top center;
+  }
+  .bio-placeholder {
+    width: 130px;
+    height: 130px;
+    border-radius: 8px;
+    background: var(--coral-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--coral);
+    font-family: 'Lora', serif;
+    font-weight: 600;
+  }
+  .bio-content h3 {
+    font-family: 'Lora', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+  .bio-role {
+    font-size: 0.84rem;
+    color: var(--coral);
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+  }
+  .bio-content p {
+    font-size: 0.9rem;
+    color: #4a4540;
+    line-height: 1.65;
+  }
+
+  /* ── Moderator card ── */
+  .moderator-card {
+    background: var(--navy);
+    color: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    margin-top: 1.4rem;
+  }
+  .moderator-card img {
+    width: 130px;
+    height: 130px;
+    border-radius: 8px;
+    object-fit: cover;
+    object-position: top center;
+  }
+  .moderator-card h3 {
+    font-family: 'Lora', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 2px;
+  }
+  .moderator-role {
+    font-size: 0.84rem;
+    color: #f0c9ba;
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+  }
+  .moderator-card p {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.65;
+  }
+
+  /* ── Footer ── */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.82rem;
+  }
+  footer strong { color: rgba(255,255,255,0.85); }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .robots { grid-template-columns: 1fr; max-height: none; }
+    .robots img { height: 220px; }
+    .bio-card, .moderator-card {
+      grid-template-columns: 1fr;
+    }
+    .bio-card img, .moderator-card img, .bio-placeholder {
+      width: 100px; height: 100px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="event-badge">ICSR+Art 2026 · Industry Day</div>
+  <h1><em>There's No Place Like Home:</em> Exploring The Next Frontier for Social Robots</h1>
+  <p class="header-subtitle">A panel debate with leading experts from industry</p>
+  <div class="header-meta">
+    <span>📅 <strong>Friday, July 3, 2026</strong></span>
+    <span>📍 <strong>London, UK</strong></span>
+    <span>🤖 <strong>ICSR+Art 2026</strong></span>
+  </div>
+</header>
+
+<div class="robots">
+  <img src="images/Moxie.jpg" alt="Moxie social robot by Embodied — a teal companion robot for children" />
+  <img src="images/Genie_robot.webp" alt="Genie robot by Cera — a companion robot for elderly care at home" />
+  <img src="images/mirumi.jpg" alt="Mirumi — a bag charm robot by Yukai Engineering" />
+</div>
+
+<main>
+
+  <div class="about">
+    <p class="section-label">About the Panel</p>
+    <p>Robot companies are increasingly focusing on the home as "ground zero" to tap into a massive, untapped consumer market — robots to help with daily chores, deliver personalized assistance, and support ageing-in-place and companionship. Unlike warehouses or factories, homes are chaotic and unpredictable spaces. They are also among the most intimate places, where privacy and trust are critical.</p>
+    <p>This panel explores the opportunities and challenges of introducing social robots into domestic life, and considers the messy realities of trust, surveillance, dependency, and failure inside the home. As we know from the challenges facing robot adoption in other sectors, technical capability does not necessarily equal social acceptance.</p>
+    <p>The panelists have all successfully deployed consumer robots in the home and tackled these challenges firsthand. The discussion will explore how a new class of home robots can earn their place in our homes and in our hearts — or whether "home" remains an insurmountable challenge. Looking ahead, the conversation considers how thoughtful design, clear value, and human-centered boundaries can turn skepticism into trust and unlock a more meaningful future for consumer robotics at home.</p>
+  </div>
+
+  <hr />
+
+  <div class="panelists-intro">
+    <p class="section-label">Panelists</p>
+    <h2>Meet the Speakers</h2>
+    <div class="names">
+      <span class="name-chip">Ira Renfrew</span>
+      <span class="name-chip">Craig Allen</span>
+      <span class="name-chip">Shunsuke Aoki</span>
+      <span class="name-chip">Samuel Ader</span>
+    </div>
+  </div>
+
+  <!-- Ira Renfrew -->
+  <div class="bio-card">
+    <img src="images/Ira_Renfrew.jpg" alt="Headshot of Ira Renfrew" />
+    <div class="bio-content">
+      <h3>Ira Renfrew</h3>
+      <div class="bio-role">Co-Founder &amp; Chief People &amp; Product Officer, Familiar Machines &amp; Magic</div>
+      <p>Ira is building the next chapter of consumer technology: emotionally intelligent physical AI. Over the past decade, he has led teams that design and ship robots — from category creation with smart lawncare at iRobot, to delivery innovation with last-mile delivery robots at Amazon, to automating global freight networks as Chief Product Officer at Outrider. A consistent throughline in Ira's career is translating innovation into products and services that people trust — and building the teams, culture, and operating systems that make that possible. He brings a global perspective shaped by work across North America, Europe, the Middle East, and Asia. Ira holds an MBA from Harvard Business School and a BA from Stanford University.</p>
+    </div>
+  </div>
+
+  <!-- Craig Allen -->
+  <div class="bio-card">
+    <img src="images/Craig_Allen.JPG" alt="Headshot of Craig Allen" />
+    <div class="bio-content">
+      <h3>Craig Allen</h3>
+      <div class="bio-role">Former Chief Creative Officer, Embodied</div>
+      <p>Craig is a veteran media and technology executive focused on bringing characters to life through innovation, storytelling, and interactive play. As the former Chief Creative Officer at Embodied, he led the development of MOXIE AI — a groundbreaking social robot featured on the cover of TIME and in the film M3GAN 2.0. Previously, Craig was a founding member of Disney Interactive (Toy Story, Hercules), led Jim Henson Interactive (where he pioneered an award-winning digital puppetry system), and co-founded Spark Unlimited (a video game studio notable for the first Call of Duty game for consoles). Currently, Craig serves as CEO of Snackshop and advises companies working to create a more playful world.</p>
+    </div>
+  </div>
+
+  <!-- Shunsuke Aoki -->
+  <div class="bio-card">
+    <img src="images/Shunsuke.jpg" alt="Headshot of Shunsuke Aoki" />
+    <div class="bio-content">
+      <h3>Shunsuke Aoki</h3>
+      <div class="bio-role">Founder &amp; CEO, Yukai Engineering</div>
+      <p>Shunsuke founded Yukai Engineering with the vision of "Robotics for Fun Living." While studying at the University of Tokyo, he co-founded teamLab and served as its CTO; he later became CTO of pixiv, building his career at the intersection of technology and creative expression. Rather than focusing solely on functionality and efficiency, Yukai Engineering develops products that create emotionally engaging experiences. In 2025, the company launched "Mirumi," a bag charm robot that captured global attention — expanding robotics into collaborations with fashion brands and opening new possibilities for the field. Aoki served as a jury member of the Good Design Award from 2015 to 2021 and is currently a professor at Musashino Art University.</p>
+    </div>
+  </div>
+
+  <!-- Samuel Ader -->
+  <div class="bio-card">
+    <div class="bio-placeholder">SA</div>
+    <div class="bio-content">
+      <h3>Samuel Ader</h3>
+      <div class="bio-role">VP Growth &amp; Supply, Cera</div>
+      <p>Samuel is VP of Growth &amp; Supply at Cera, a leading digital-first home healthcare company that combines professional caregiving with AI-powered technology and the Genie robot to deliver care in patients' homes. Cera serves over 30 million people in the UK and Germany, partnering with the NHS and local governments. The company has deployed over 1,000 Genie robots in private homes and assisted living communities.</p>
+    </div>
+  </div>
+
+  <hr />
+
+  <p class="section-label">Moderator</p>
+  <h2>Moderated by</h2>
+
+  <div class="moderator-card">
+    <img src="images/Elizabeth_Jochum_headshot_.jpg" alt="Headshot of Elizabeth Jochum" />
+    <div>
+      <h3>Elizabeth Jochum, PhD</h3>
+      <div class="moderator-role">Director of Robotics and Automation, RA Capital Management</div>
+      <p>Elizabeth focuses on the impact of robotics on labor, with an emphasis on healthcare and beyond. Her mission is to help develop creative, value-sensitive, and human-centered solutions to ensure the technologies we build address the real needs of people. She also holds a research appointment as an Associate Professor at Aalborg University in Denmark.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <strong>ICSR+Art 2026</strong> · Industry Day · Friday, July 3, 2026 · London, UK
+</footer>
+
+</body>
+</html>
